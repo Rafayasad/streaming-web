@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id    Int     @id @default(autoincrement())
+  role Roles  @relation(fields: [roleId], references: [id])
+  email String  @unique
+  password  String?
+  type  String?  @default("email")
+  fullname  String?
+  interests  Json?
+  phoneNumber String?
+  profilePic String?
+  roleId Int
+  dob DateTime?
+  gender String?
+  aboutMe String?
+  otp Otp?
+}
+
+model Otp {
+  id    Int     @id @default(autoincrement())
+  user User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId Int  @unique
+  otp Int?  @unique
+  otpExpiry DateTime?
+  used Boolean  @default(false)
+}
+
+model Interest {
+  id    Int     @id @default(autoincrement())
+  interest String  @unique
+  level Json
+}
+
+model Roles {
+  id    Int     @id @default(autoincrement())
+  role String  @unique
+  user User[]
+}
+
+model ActivityTypes {
+  id    Int     @id @default(autoincrement())
+  name String  @unique
+  activity Activities?
+}
+
+model Activities {
+  id    Int     @id @default(autoincrement())
+  type ActivityTypes  @relation(fields: [typeId], references: [id], onDelete: Cascade)
+  name String  @unique
+  typeId Int @unique
+  categories Categories[]
+}
+
+model Categories {
+  id    Int     @id @default(autoincrement())
+  activity Activities  @relation(fields: [activityId], references: [id], onDelete: Cascade)
+  name String  @unique
+  location Json 
+  rating  Float @default(0)
+  createdAt  DateTime
+  availableAt  DateTime
+  unavailableAt  DateTime
+  capacity  Int @default(1)
+  minThreshold  Int @default(100)
+  active Boolean
+  activityId Int
+}
