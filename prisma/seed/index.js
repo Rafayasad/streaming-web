@@ -11,11 +11,8 @@ async function main() {
             role: 'admin'
         },
         {
-            role: 'streamer',
-        },
-        {
-            role: 'viewer'
-        },
+            role: 'user',
+        }
         // Add more objects for additional rows
     ];
 

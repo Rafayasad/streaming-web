@@ -338,6 +338,40 @@ const userResolver = {
 
     },
 
+    archiveUser: async (parent, { input }, { id }) => {
+        try {
+            let data = input
+            if (profilePic != undefined) {
+                data = {
+                    ...input,
+                    profilePic: await upload.uploadImage(profilePic.file, "profile")
+                }
+            }
+            const user = await prisma.user.update({
+                where: {
+                    id
+                },
+                data
+            })
+            delete user.password
+            delete user.type
+
+            return {
+                data: user,
+                message: successName.UPDATEUSER
+            }
+
+        } catch (err) {
+            if (err instanceof Prisma.PrismaClientKnownRequestError) {
+                if (err.code === 'P2025') return errorGenerator(errorName.NORECORDFOUND)
+                else return errorGenerator(errorName.INTERNALSERVER)
+            }
+
+            return errorGenerator(errorName.INTERNALSERVER)
+        }
+    },
+
+
 };
 
 

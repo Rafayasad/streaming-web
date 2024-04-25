@@ -25,6 +25,7 @@ model User {
   gender      String?
   aboutMe     String?
   otp         Otp?
+  archive     Boolean
 }
 
 model Otp {

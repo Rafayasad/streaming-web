@@ -113,13 +113,13 @@ exports.Prisma.UserScalarFieldEnum = {
   password: 'password',
   type: 'type',
   fullname: 'fullname',
-  interests: 'interests',
   phoneNumber: 'phoneNumber',
   profilePic: 'profilePic',
   roleId: 'roleId',
   dob: 'dob',
   gender: 'gender',
-  aboutMe: 'aboutMe'
+  aboutMe: 'aboutMe',
+  archive: 'archive'
 };
 
 exports.Prisma.OtpScalarFieldEnum = {
@@ -140,20 +140,9 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.NullableJsonNullValueInput = {
-  DbNull: Prisma.DbNull,
-  JsonNull: Prisma.JsonNull
-};
-
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
-};
-
-exports.Prisma.JsonNullValueFilter = {
-  DbNull: Prisma.DbNull,
-  JsonNull: Prisma.JsonNull,
-  AnyNull: Prisma.AnyNull
 };
 
 exports.Prisma.NullsOrder = {

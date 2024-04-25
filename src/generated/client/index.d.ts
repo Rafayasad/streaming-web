@@ -1087,6 +1087,7 @@ export namespace Prisma {
     dob: Date | null
     gender: string | null
     aboutMe: string | null
+    archive: boolean | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1101,6 +1102,7 @@ export namespace Prisma {
     dob: Date | null
     gender: string | null
     aboutMe: string | null
+    archive: boolean | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1109,13 +1111,13 @@ export namespace Prisma {
     password: number
     type: number
     fullname: number
-    interests: number
     phoneNumber: number
     profilePic: number
     roleId: number
     dob: number
     gender: number
     aboutMe: number
+    archive: number
     _all: number
   }
 
@@ -1142,6 +1144,7 @@ export namespace Prisma {
     dob?: true
     gender?: true
     aboutMe?: true
+    archive?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1156,6 +1159,7 @@ export namespace Prisma {
     dob?: true
     gender?: true
     aboutMe?: true
+    archive?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1164,13 +1168,13 @@ export namespace Prisma {
     password?: true
     type?: true
     fullname?: true
-    interests?: true
     phoneNumber?: true
     profilePic?: true
     roleId?: true
     dob?: true
     gender?: true
     aboutMe?: true
+    archive?: true
     _all?: true
   }
 
@@ -1266,13 +1270,13 @@ export namespace Prisma {
     password: string | null
     type: string | null
     fullname: string | null
-    interests: JsonValue | null
     phoneNumber: string | null
     profilePic: string | null
     roleId: number
     dob: Date | null
     gender: string | null
     aboutMe: string | null
+    archive: boolean
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1300,13 +1304,13 @@ export namespace Prisma {
     password?: boolean
     type?: boolean
     fullname?: boolean
-    interests?: boolean
     phoneNumber?: boolean
     profilePic?: boolean
     roleId?: boolean
     dob?: boolean
     gender?: boolean
     aboutMe?: boolean
+    archive?: boolean
     role?: boolean | RolesDefaultArgs<ExtArgs>
     otp?: boolean | User$otpArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -1317,13 +1321,13 @@ export namespace Prisma {
     password?: boolean
     type?: boolean
     fullname?: boolean
-    interests?: boolean
     phoneNumber?: boolean
     profilePic?: boolean
     roleId?: boolean
     dob?: boolean
     gender?: boolean
     aboutMe?: boolean
+    archive?: boolean
   }
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1344,13 +1348,13 @@ export namespace Prisma {
       password: string | null
       type: string | null
       fullname: string | null
-      interests: Prisma.JsonValue | null
       phoneNumber: string | null
       profilePic: string | null
       roleId: number
       dob: Date | null
       gender: string | null
       aboutMe: string | null
+      archive: boolean
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1753,13 +1757,13 @@ export namespace Prisma {
     readonly password: FieldRef<"User", 'String'>
     readonly type: FieldRef<"User", 'String'>
     readonly fullname: FieldRef<"User", 'String'>
-    readonly interests: FieldRef<"User", 'Json'>
     readonly phoneNumber: FieldRef<"User", 'String'>
     readonly profilePic: FieldRef<"User", 'String'>
     readonly roleId: FieldRef<"User", 'Int'>
     readonly dob: FieldRef<"User", 'DateTime'>
     readonly gender: FieldRef<"User", 'String'>
     readonly aboutMe: FieldRef<"User", 'String'>
+    readonly archive: FieldRef<"User", 'Boolean'>
   }
     
 
@@ -4025,13 +4029,13 @@ export namespace Prisma {
     password: 'password',
     type: 'type',
     fullname: 'fullname',
-    interests: 'interests',
     phoneNumber: 'phoneNumber',
     profilePic: 'profilePic',
     roleId: 'roleId',
     dob: 'dob',
     gender: 'gender',
-    aboutMe: 'aboutMe'
+    aboutMe: 'aboutMe',
+    archive: 'archive'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -4064,29 +4068,12 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-  export const NullableJsonNullValueInput: {
-    DbNull: typeof DbNull,
-    JsonNull: typeof JsonNull
-  };
-
-  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
-
-
   export const QueryMode: {
     default: 'default',
     insensitive: 'insensitive'
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
-
-
-  export const JsonNullValueFilter: {
-    DbNull: typeof DbNull,
-    JsonNull: typeof JsonNull,
-    AnyNull: typeof AnyNull
-  };
-
-  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   export const NullsOrder: {
@@ -4127,13 +4114,6 @@ export namespace Prisma {
    * Reference to a field of type 'String[]'
    */
   export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Json'
-   */
-  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
     
 
 
@@ -4184,13 +4164,13 @@ export namespace Prisma {
     password?: StringNullableFilter<"User"> | string | null
     type?: StringNullableFilter<"User"> | string | null
     fullname?: StringNullableFilter<"User"> | string | null
-    interests?: JsonNullableFilter<"User">
     phoneNumber?: StringNullableFilter<"User"> | string | null
     profilePic?: StringNullableFilter<"User"> | string | null
     roleId?: IntFilter<"User"> | number
     dob?: DateTimeNullableFilter<"User"> | Date | string | null
     gender?: StringNullableFilter<"User"> | string | null
     aboutMe?: StringNullableFilter<"User"> | string | null
+    archive?: BoolFilter<"User"> | boolean
     role?: XOR<RolesRelationFilter, RolesWhereInput>
     otp?: XOR<OtpNullableRelationFilter, OtpWhereInput> | null
   }
@@ -4201,13 +4181,13 @@ export namespace Prisma {
     password?: SortOrderInput | SortOrder
     type?: SortOrderInput | SortOrder
     fullname?: SortOrderInput | SortOrder
-    interests?: SortOrderInput | SortOrder
     phoneNumber?: SortOrderInput | SortOrder
     profilePic?: SortOrderInput | SortOrder
     roleId?: SortOrder
     dob?: SortOrderInput | SortOrder
     gender?: SortOrderInput | SortOrder
     aboutMe?: SortOrderInput | SortOrder
+    archive?: SortOrder
     role?: RolesOrderByWithRelationInput
     otp?: OtpOrderByWithRelationInput
   }
@@ -4221,13 +4201,13 @@ export namespace Prisma {
     password?: StringNullableFilter<"User"> | string | null
     type?: StringNullableFilter<"User"> | string | null
     fullname?: StringNullableFilter<"User"> | string | null
-    interests?: JsonNullableFilter<"User">
     phoneNumber?: StringNullableFilter<"User"> | string | null
     profilePic?: StringNullableFilter<"User"> | string | null
     roleId?: IntFilter<"User"> | number
     dob?: DateTimeNullableFilter<"User"> | Date | string | null
     gender?: StringNullableFilter<"User"> | string | null
     aboutMe?: StringNullableFilter<"User"> | string | null
+    archive?: BoolFilter<"User"> | boolean
     role?: XOR<RolesRelationFilter, RolesWhereInput>
     otp?: XOR<OtpNullableRelationFilter, OtpWhereInput> | null
   }, "id" | "email">
@@ -4238,13 +4218,13 @@ export namespace Prisma {
     password?: SortOrderInput | SortOrder
     type?: SortOrderInput | SortOrder
     fullname?: SortOrderInput | SortOrder
-    interests?: SortOrderInput | SortOrder
     phoneNumber?: SortOrderInput | SortOrder
     profilePic?: SortOrderInput | SortOrder
     roleId?: SortOrder
     dob?: SortOrderInput | SortOrder
     gender?: SortOrderInput | SortOrder
     aboutMe?: SortOrderInput | SortOrder
+    archive?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -4261,13 +4241,13 @@ export namespace Prisma {
     password?: StringNullableWithAggregatesFilter<"User"> | string | null
     type?: StringNullableWithAggregatesFilter<"User"> | string | null
     fullname?: StringNullableWithAggregatesFilter<"User"> | string | null
-    interests?: JsonNullableWithAggregatesFilter<"User">
     phoneNumber?: StringNullableWithAggregatesFilter<"User"> | string | null
     profilePic?: StringNullableWithAggregatesFilter<"User"> | string | null
     roleId?: IntWithAggregatesFilter<"User"> | number
     dob?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     gender?: StringNullableWithAggregatesFilter<"User"> | string | null
     aboutMe?: StringNullableWithAggregatesFilter<"User"> | string | null
+    archive?: BoolWithAggregatesFilter<"User"> | boolean
   }
 
   export type OtpWhereInput = {
@@ -4374,12 +4354,12 @@ export namespace Prisma {
     password?: string | null
     type?: string | null
     fullname?: string | null
-    interests?: NullableJsonNullValueInput | InputJsonValue
     phoneNumber?: string | null
     profilePic?: string | null
     dob?: Date | string | null
     gender?: string | null
     aboutMe?: string | null
+    archive: boolean
     role: RolesCreateNestedOneWithoutUserInput
     otp?: OtpCreateNestedOneWithoutUserInput
   }
@@ -4390,13 +4370,13 @@ export namespace Prisma {
     password?: string | null
     type?: string | null
     fullname?: string | null
-    interests?: NullableJsonNullValueInput | InputJsonValue
     phoneNumber?: string | null
     profilePic?: string | null
     roleId: number
     dob?: Date | string | null
     gender?: string | null
     aboutMe?: string | null
+    archive: boolean
     otp?: OtpUncheckedCreateNestedOneWithoutUserInput
   }
 
@@ -4405,12 +4385,12 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     fullname?: NullableStringFieldUpdateOperationsInput | string | null
-    interests?: NullableJsonNullValueInput | InputJsonValue
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     profilePic?: NullableStringFieldUpdateOperationsInput | string | null
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     aboutMe?: NullableStringFieldUpdateOperationsInput | string | null
+    archive?: BoolFieldUpdateOperationsInput | boolean
     role?: RolesUpdateOneRequiredWithoutUserNestedInput
     otp?: OtpUpdateOneWithoutUserNestedInput
   }
@@ -4421,13 +4401,13 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     fullname?: NullableStringFieldUpdateOperationsInput | string | null
-    interests?: NullableJsonNullValueInput | InputJsonValue
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     profilePic?: NullableStringFieldUpdateOperationsInput | string | null
     roleId?: IntFieldUpdateOperationsInput | number
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     aboutMe?: NullableStringFieldUpdateOperationsInput | string | null
+    archive?: BoolFieldUpdateOperationsInput | boolean
     otp?: OtpUncheckedUpdateOneWithoutUserNestedInput
   }
 
@@ -4437,13 +4417,13 @@ export namespace Prisma {
     password?: string | null
     type?: string | null
     fullname?: string | null
-    interests?: NullableJsonNullValueInput | InputJsonValue
     phoneNumber?: string | null
     profilePic?: string | null
     roleId: number
     dob?: Date | string | null
     gender?: string | null
     aboutMe?: string | null
+    archive: boolean
   }
 
   export type UserUpdateManyMutationInput = {
@@ -4451,12 +4431,12 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     fullname?: NullableStringFieldUpdateOperationsInput | string | null
-    interests?: NullableJsonNullValueInput | InputJsonValue
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     profilePic?: NullableStringFieldUpdateOperationsInput | string | null
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     aboutMe?: NullableStringFieldUpdateOperationsInput | string | null
+    archive?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -4465,13 +4445,13 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     fullname?: NullableStringFieldUpdateOperationsInput | string | null
-    interests?: NullableJsonNullValueInput | InputJsonValue
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     profilePic?: NullableStringFieldUpdateOperationsInput | string | null
     roleId?: IntFieldUpdateOperationsInput | number
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     aboutMe?: NullableStringFieldUpdateOperationsInput | string | null
+    archive?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type OtpCreateInput = {
@@ -4602,28 +4582,6 @@ export namespace Prisma {
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
-  export type JsonNullableFilter<$PrismaModel = never> = 
-    | PatchUndefined<
-        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type DateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
@@ -4634,6 +4592,11 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type RolesRelationFilter = {
@@ -4657,13 +4620,13 @@ export namespace Prisma {
     password?: SortOrder
     type?: SortOrder
     fullname?: SortOrder
-    interests?: SortOrder
     phoneNumber?: SortOrder
     profilePic?: SortOrder
     roleId?: SortOrder
     dob?: SortOrder
     gender?: SortOrder
     aboutMe?: SortOrder
+    archive?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -4683,6 +4646,7 @@ export namespace Prisma {
     dob?: SortOrder
     gender?: SortOrder
     aboutMe?: SortOrder
+    archive?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -4697,6 +4661,7 @@ export namespace Prisma {
     dob?: SortOrder
     gender?: SortOrder
     aboutMe?: SortOrder
+    archive?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -4755,31 +4720,6 @@ export namespace Prisma {
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
-  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> = 
-    | PatchUndefined<
-        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedJsonNullableFilter<$PrismaModel>
-    _max?: NestedJsonNullableFilter<$PrismaModel>
-  }
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
@@ -4795,6 +4735,14 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type IntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -4804,11 +4752,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type UserRelationFilter = {
@@ -4866,14 +4809,6 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type UserListRelationFilter = {
@@ -4939,6 +4874,10 @@ export namespace Prisma {
     set?: Date | string | null
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type RolesUpdateOneRequiredWithoutUserNestedInput = {
     create?: XOR<RolesCreateWithoutUserInput, RolesUncheckedCreateWithoutUserInput>
     connectOrCreate?: RolesCreateOrConnectWithoutUserInput
@@ -4987,10 +4926,6 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
   }
 
   export type UserUpdateOneRequiredWithoutOtpNestedInput = {
@@ -5093,6 +5028,11 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -5164,28 +5104,6 @@ export namespace Prisma {
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
-  export type NestedJsonNullableFilter<$PrismaModel = never> = 
-    | PatchUndefined<
-        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
-
-  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
@@ -5201,9 +5119,12 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type NestedBoolFilter<$PrismaModel = never> = {
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -5231,14 +5152,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type RolesCreateWithoutUserInput = {
@@ -5322,12 +5235,12 @@ export namespace Prisma {
     password?: string | null
     type?: string | null
     fullname?: string | null
-    interests?: NullableJsonNullValueInput | InputJsonValue
     phoneNumber?: string | null
     profilePic?: string | null
     dob?: Date | string | null
     gender?: string | null
     aboutMe?: string | null
+    archive: boolean
     role: RolesCreateNestedOneWithoutUserInput
   }
 
@@ -5337,13 +5250,13 @@ export namespace Prisma {
     password?: string | null
     type?: string | null
     fullname?: string | null
-    interests?: NullableJsonNullValueInput | InputJsonValue
     phoneNumber?: string | null
     profilePic?: string | null
     roleId: number
     dob?: Date | string | null
     gender?: string | null
     aboutMe?: string | null
+    archive: boolean
   }
 
   export type UserCreateOrConnectWithoutOtpInput = {
@@ -5367,12 +5280,12 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     fullname?: NullableStringFieldUpdateOperationsInput | string | null
-    interests?: NullableJsonNullValueInput | InputJsonValue
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     profilePic?: NullableStringFieldUpdateOperationsInput | string | null
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     aboutMe?: NullableStringFieldUpdateOperationsInput | string | null
+    archive?: BoolFieldUpdateOperationsInput | boolean
     role?: RolesUpdateOneRequiredWithoutUserNestedInput
   }
 
@@ -5382,13 +5295,13 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     fullname?: NullableStringFieldUpdateOperationsInput | string | null
-    interests?: NullableJsonNullValueInput | InputJsonValue
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     profilePic?: NullableStringFieldUpdateOperationsInput | string | null
     roleId?: IntFieldUpdateOperationsInput | number
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     aboutMe?: NullableStringFieldUpdateOperationsInput | string | null
+    archive?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserCreateWithoutRoleInput = {
@@ -5396,12 +5309,12 @@ export namespace Prisma {
     password?: string | null
     type?: string | null
     fullname?: string | null
-    interests?: NullableJsonNullValueInput | InputJsonValue
     phoneNumber?: string | null
     profilePic?: string | null
     dob?: Date | string | null
     gender?: string | null
     aboutMe?: string | null
+    archive: boolean
     otp?: OtpCreateNestedOneWithoutUserInput
   }
 
@@ -5411,12 +5324,12 @@ export namespace Prisma {
     password?: string | null
     type?: string | null
     fullname?: string | null
-    interests?: NullableJsonNullValueInput | InputJsonValue
     phoneNumber?: string | null
     profilePic?: string | null
     dob?: Date | string | null
     gender?: string | null
     aboutMe?: string | null
+    archive: boolean
     otp?: OtpUncheckedCreateNestedOneWithoutUserInput
   }
 
@@ -5455,13 +5368,13 @@ export namespace Prisma {
     password?: StringNullableFilter<"User"> | string | null
     type?: StringNullableFilter<"User"> | string | null
     fullname?: StringNullableFilter<"User"> | string | null
-    interests?: JsonNullableFilter<"User">
     phoneNumber?: StringNullableFilter<"User"> | string | null
     profilePic?: StringNullableFilter<"User"> | string | null
     roleId?: IntFilter<"User"> | number
     dob?: DateTimeNullableFilter<"User"> | Date | string | null
     gender?: StringNullableFilter<"User"> | string | null
     aboutMe?: StringNullableFilter<"User"> | string | null
+    archive?: BoolFilter<"User"> | boolean
   }
 
   export type UserCreateManyRoleInput = {
@@ -5470,12 +5383,12 @@ export namespace Prisma {
     password?: string | null
     type?: string | null
     fullname?: string | null
-    interests?: NullableJsonNullValueInput | InputJsonValue
     phoneNumber?: string | null
     profilePic?: string | null
     dob?: Date | string | null
     gender?: string | null
     aboutMe?: string | null
+    archive: boolean
   }
 
   export type UserUpdateWithoutRoleInput = {
@@ -5483,12 +5396,12 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     fullname?: NullableStringFieldUpdateOperationsInput | string | null
-    interests?: NullableJsonNullValueInput | InputJsonValue
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     profilePic?: NullableStringFieldUpdateOperationsInput | string | null
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     aboutMe?: NullableStringFieldUpdateOperationsInput | string | null
+    archive?: BoolFieldUpdateOperationsInput | boolean
     otp?: OtpUpdateOneWithoutUserNestedInput
   }
 
@@ -5498,12 +5411,12 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     fullname?: NullableStringFieldUpdateOperationsInput | string | null
-    interests?: NullableJsonNullValueInput | InputJsonValue
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     profilePic?: NullableStringFieldUpdateOperationsInput | string | null
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     aboutMe?: NullableStringFieldUpdateOperationsInput | string | null
+    archive?: BoolFieldUpdateOperationsInput | boolean
     otp?: OtpUncheckedUpdateOneWithoutUserNestedInput
   }
 
@@ -5513,12 +5426,12 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     type?: NullableStringFieldUpdateOperationsInput | string | null
     fullname?: NullableStringFieldUpdateOperationsInput | string | null
-    interests?: NullableJsonNullValueInput | InputJsonValue
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     profilePic?: NullableStringFieldUpdateOperationsInput | string | null
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     aboutMe?: NullableStringFieldUpdateOperationsInput | string | null
+    archive?: BoolFieldUpdateOperationsInput | boolean
   }
 
 
